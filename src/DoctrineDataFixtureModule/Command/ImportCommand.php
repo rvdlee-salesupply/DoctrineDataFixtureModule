@@ -65,11 +65,7 @@ class ImportCommand extends Command
 
         $this->setName('data-fixture:import')
             ->setDescription('Import Data Fixtures')
-            ->setHelp(
-<<<EOT
-The import command Imports data-fixtures
-EOT
-            )
+            ->setHelp('The import command Imports data-fixtures')
             ->addOption('append', null, InputOption::VALUE_NONE, 'Append data to existing data.')
             ->addOption('purge-with-truncate', null, InputOption::VALUE_NONE, 'Truncate tables before inserting data');
     }
