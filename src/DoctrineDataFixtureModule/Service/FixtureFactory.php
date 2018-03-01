@@ -1,27 +1,9 @@
 <?php
-/*
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
- * "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
- * LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
- * A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
- * OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
- * SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
- * LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
- * DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
- * THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
- * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
- * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
- *
- * This software consists of voluntary contributions made by many individuals
- * and is licensed under the MIT license. For more information, see
- * <http://www.doctrine-project.org>.
- */
 
 namespace DoctrineDataFixtureModule\Service;
 
-
-use Zend\ServiceManager\FactoryInterface;
-use Zend\ServiceManager\ServiceLocatorInterface;
+use Interop\Container\ContainerInterface;
+use Zend\ServiceManager\Factory\FactoryInterface;
 
 /**
  * Factory for Fixtures
@@ -29,29 +11,43 @@ use Zend\ServiceManager\ServiceLocatorInterface;
  * @license MIT
  * @link    www.doctrine-project.org
  * @author  Martin Shwalbe <martin.shwalbe@gmail.com>
+ * @author  Rob van der Lee <r.vdlee@salesupply.com>
  */
 class FixtureFactory implements FactoryInterface
 {
-    public function createService(ServiceLocatorInterface $sl)
+    /**
+     * @param ContainerInterface $container
+     * @param string $requestedName
+     * @return bool
+     */
+    public function canCreate(ContainerInterface $container, $requestedName)
     {
-        /** @var $options \DoctrineORMModule\Options\DBALConnection */
-        $options = $this->getOptions($sl, 'fixtures');
-        
-        return $options;
+        return class_exists($requestedName);
     }
 
     /**
-     * Gets options from configuration based on name.
-     *
-     * @param  ServiceLocatorInterface      $sl
-     * @param  string                       $key
-     * @param  null|string                  $name
-     * @return \Zend\Stdlib\AbstractOptions
-     * @throws \RuntimeException
+     * @param ContainerInterface $container
+     * @param string $requestedName
+     * @param array|null $options
+     * @return array|object
+     * @throws \Psr\Container\ContainerExceptionInterface
+     * @throws \Psr\Container\NotFoundExceptionInterface
      */
-    public function getOptions(ServiceLocatorInterface $sl, $key)
+    public function __invoke(ContainerInterface $container, $requestedName, array $options = null)
     {
-        $options = $sl->get('config');
+        return $this->getOptions($container, 'fixtures');
+    }
+
+    /**
+     * @param ContainerInterface $container
+     * @param $key
+     * @return array
+     * @throws \Psr\Container\ContainerExceptionInterface
+     * @throws \Psr\Container\NotFoundExceptionInterface
+     */
+    public function getOptions(ContainerInterface $container, $key)
+    {
+        $options = $container->get('config');
         if (!isset($options['doctrine']['fixture'])) {
             return array();
         }
