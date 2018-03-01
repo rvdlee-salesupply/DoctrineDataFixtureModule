@@ -1,6 +1,6 @@
 {
-    "name": "hounddog/doctrine-data-fixture-module",
-    "description": "Zend Framework 2 Module that provides Doctrine Data-Fixture functionality",
+    "name": "rvdlee-salesupply/doctrine-data-fixture-module",
+    "description": "A port for ZF3 of Hounddog's original data-fixture code.",
     "type": "library",
     "license": "MIT",
     "keywords": [
@@ -14,13 +14,17 @@
         {
             "name": "Martin Shwalbe",
             "email": "martin.shwalbe@gmail.com"
+        },
+        {
+            "name": "Rob van der Lee",
+            "email": "r.vdlee@salesupply.com"
         }
     ],
     "require": {
         "php": ">=5.3.3",
-        "zendframework/zend-modulemanager": "2.*",
-        "zendframework/zend-eventmanager": "2.*",
-        "zendframework/zend-servicemanager": "2.*",
+        "zendframework/zend-modulemanager": "3.*",
+        "zendframework/zend-eventmanager": "3.*",
+        "zendframework/zend-servicemanager": "3.*",
         "doctrine/data-fixtures": "1.1.*",
         "doctrine/doctrine-orm-module": "~0.7"
     },

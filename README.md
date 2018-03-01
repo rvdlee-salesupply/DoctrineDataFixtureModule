@@ -5,17 +5,7 @@
 
 ## Introduction
 
-The DoctrineDataFixtureModule module intends to integrate Doctrine 2 data-fixture with Zend Framework 2 quickly
-and easily. The following features are intended to work out of the box:
-
-  - Doctrine ORM support
-  - Multiple ORM entity managers
-  - Multiple DBAL connections
-  - Support reuse existing PDO connections in DBAL
-
-## Requirements
-
-This module is designed to work with a typical [ZF2 MVC application](https://github.com/zendframework/ZendSkeletonApplication).
+This is a port for ZF3 of Hounddog's orignal code to make fixtures supported in the form of a CLI command.
 
 ## Installation
 
@@ -23,7 +13,7 @@ Installation of this module uses composer. For composer documentation, please re
 [getcomposer.org](http://getcomposer.org/).
 
 ```sh
-$ php composer.phar require hounddog/doctrine-data-fixture-module:0.0.*
+$ composer require rvdlee-salesupply/doctrine-data-fixture-module
 ```
 
 Then open `config/application.config.php` and add `DoctrineModule`, `DoctrineORMModule` and 
@@ -35,21 +25,20 @@ To register fixtures with Doctrine module add the fixtures in your configuration
 
 ```php
 <?php
-return array(
-      'doctrine' => array(
-            'fixture' => array(
-                  'ModuleName_fixture' => __DIR__ . '/../src/ModuleName/Fixture',
-            )
-      )
-);
+
+return [
+    'doctrine' => [
+        'fixture' => [
+            __NAMESPACE__ . '_fixture' => __DIR__ . '/../src/' . __NAMESPACE__ . '/Fixture',
+        ]
+    ]
+];
 ```
 
 ## Usage
 
 #### Command Line
-Access the Doctrine command line as following
-
-##Import
+Access the Doctrine command line as following from your project root:
 ```sh
-./vendor/bin/doctrine-module data-fixture:import 
+$ ./vendor/bin/doctrine-module data-fixture:import 
 ```
