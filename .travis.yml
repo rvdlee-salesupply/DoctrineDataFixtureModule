@@ -3,11 +3,15 @@ php:
   - 7.0
   - 7.1
 
+services:
+  - mysql
+
 before_script:
   - composer self-update
   - composer update --prefer-source; composer install --dev --prefer-source;
 
 script:
+  - ./vendor/bin/doctrine-module orm:schema-tool:update -f
   - ./vendor/bin/phpunit --coverage-clover ./build/logs/clover.xml
   - ./vendor/bin/phpcs --standard=PSR2 ./src/ ./tests/
   

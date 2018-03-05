@@ -1,4 +1,4 @@
-# DoctrineDataFixture Module for Zend Framework 2
+# DoctrineDataFixture Module for Zend Framework 3
 
 [![Build Status](https://travis-ci.org/Hounddog/DoctrineDataFixtureModule.png)](https://travis-ci.org/Hounddog/DoctrineDataFixtureModule)
 [![Coverage Status](https://coveralls.io/repos/Hounddog/DoctrineDataFixtureModule/badge.png?branch=master)](https://coveralls.io/r/Hounddog/DoctrineDataFixtureModule)

@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
-<!-- works fine with PHPUnit-3.6.10 -->
+<!-- Tested with PHPUnit-7.0.2 -->
 <phpunit
-    bootstrap="./tests/Bootstrap.php"
+    bootstrap="./tests/bootstrap.php"
     colors="true"
     convertErrorsToExceptions="true"
     convertNoticesToExceptions="true"
