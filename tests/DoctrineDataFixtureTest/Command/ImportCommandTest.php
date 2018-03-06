@@ -60,12 +60,25 @@ class ImportCommandTest extends TestCase
         /** @var ImportCommand $command */
         $command = new ImportCommand($serviceManager);
 
-        $this->assertInstanceOf(ServiceManager::class, $command->getServiceLocator(), 'Expected instance of ' . ServiceManager::class);
-        $this->assertInstanceOf(ImportCommand::class, $command, 'Expected instance of ' . ImportCommand::class);
+        $this->assertInstanceOf(
+            ServiceManager::class,
+            $command->getServiceLocator(),
+            'Expected instance of ' . ServiceManager::class
+        );
+
+        $this->assertInstanceOf(
+            ImportCommand::class,
+            $command,
+            'Expected instance of ' . ImportCommand::class
+        );
 
         $command->setEntityManager($entityManager);
 
-        $this->assertInstanceOf(EntityManager::class, $command->getEntityManager(), 'Expected instance of ' . EntityManager::class);
+        $this->assertInstanceOf(
+            EntityManager::class,
+            $command->getEntityManager(),
+            'Expected instance of ' . EntityManager::class
+        );
 
         $command->setPaths([
             __DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'Fixture',

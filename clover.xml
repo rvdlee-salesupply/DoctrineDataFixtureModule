@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1520371469">
-  <project timestamp="1520371469">
+<coverage generated="1520372169">
+  <project timestamp="1520372169">
     <package name="DoctrineDataFixtureModule\Command">
       <file name="/home/rob/Desktop/ZF3/ztp/vendor/rvdlee-salesupply/doctrine-data-fixture-module/src/DoctrineDataFixtureModule/Command/ImportCommand.php">
         <class name="DoctrineDataFixtureModule\Command\ImportCommand" namespace="DoctrineDataFixtureModule\Command">

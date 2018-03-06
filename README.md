@@ -1,7 +1,7 @@
 # DoctrineDataFixture Module for Zend Framework 3
 
-[![Build Status](https://travis-ci.org/Hounddog/DoctrineDataFixtureModule.png)](https://travis-ci.org/Hounddog/DoctrineDataFixtureModule)
-[![Coverage Status](https://coveralls.io/repos/Hounddog/DoctrineDataFixtureModule/badge.png?branch=master)](https://coveralls.io/r/Hounddog/DoctrineDataFixtureModule)
+[![Build Status](https://travis-ci.org/rvdlee-salesupply/DoctrineDataFixtureModule.svg?branch=master)](https://travis-ci.org/rvdlee-salesupply/DoctrineDataFixtureModule)
+[![Coverage Status](https://coveralls.io/repos/github/rvdlee-salesupply/DoctrineDataFixtureModule/badge.svg?branch=master)](https://coveralls.io/github/rvdlee-salesupply/DoctrineDataFixtureModule?branch=master)
 
 ## Introduction
 
