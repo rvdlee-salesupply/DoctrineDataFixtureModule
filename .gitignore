@@ -1,7 +1,5 @@
-/build
-/vendor
-composer.lock
-composer.phar
-.idea*
+build/**
+vendor/**
+.idea/**
 .coveralls.yml
-coverage*
+coverage/**

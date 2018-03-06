@@ -2,6 +2,7 @@
 
 namespace DoctrineDataFixtureModule\Command;
 
+use Doctrine\Common\DataFixtures\Loader;
 use Doctrine\ORM\EntityManager;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
@@ -9,7 +10,6 @@ use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Doctrine\Common\DataFixtures\Executor\ORMExecutor;
 use Doctrine\Common\DataFixtures\Purger\ORMPurger;
-use DoctrineDataFixtureModule\Loader\ServiceLocatorAwareLoader;
 use Zend\ServiceManager\ServiceLocatorInterface;
 
 /**
@@ -77,13 +77,17 @@ class ImportCommand extends Command
      */
     public function execute(InputInterface $input, OutputInterface $output)
     {
-        $loader = new ServiceLocatorAwareLoader($this->getServiceLocator());
+        /** @var Loader $loader */
+        $loader = new Loader();
+        /** @var ORMPurger $purger */
         $purger = new ORMPurger();
 
+        // Accept option purge-with-truncate
         if ($input->getOption('purge-with-truncate')) {
             $purger->setPurgeMode(self::PURGE_MODE_TRUNCATE);
         }
 
+        /** @var ORMExecutor $executor */
         $executor = new ORMExecutor($this->getEntityManager(), $purger);
 
         foreach ($this->getPaths() as $key => $value) {
