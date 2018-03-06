@@ -19,7 +19,7 @@ use Zend\ServiceManager\ServiceLocatorInterface;
  *
  * @license MIT
  * @link    www.doctrine-project.org
- * @author  Martin Shwalbe <martin.shwalbe@gmail.com>
+ * @author  Martin Shwalbe <martin.shwalbe@gmail.com>s
  * @author  Rob van der Lee <r.vdlee@salesupply.com>
  */
 class Module implements
@@ -28,18 +28,9 @@ class Module implements
     ConfigProviderInterface
 {
     /**
-     * @return array
+     * @var ModuleManager
      */
-    public function getAutoloaderConfig()
-    {
-        return [
-            'Zend\Loader\StandardAutoloader' => [
-                'namespaces' => [
-                    __NAMESPACE__ => __DIR__ . '/src/' . __NAMESPACE__
-                ],
-            ],
-        ];
-    }
+    protected $moduleManager;
 
     /**
      * @param ModuleManager $e
@@ -84,10 +75,14 @@ class Module implements
      */
     public function getServiceConfig()
     {
-        return array(
-            'factories' => [
-                'doctrine.configuration.fixtures' => new FixtureFactory('fixtures_default'),
-            ],
-        );
+        return ['factories' => $this->getConfig()['factories']];
+    }
+
+    /**
+     * @return array
+     */
+    public function getAutoloaderConfig()
+    {
+        return ['Zend\Loader\StandardAutoloader' => $this->getConfig()['Zend\Loader\StandardAutoloader']];
     }
 }

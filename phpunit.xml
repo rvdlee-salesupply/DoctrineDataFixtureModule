@@ -13,10 +13,11 @@
     syntaxCheck="true"
 >
     <testsuite name="DoctrineDataFixture Module Tests">
-        <directory>./tests/DoctrineDataFixtureTest</directory>
+        <directory>./tests/DoctrineDataFixtureTest/Command</directory>
+        <directory>./tests/DoctrineDataFixtureTest/Service</directory>
     </testsuite>
     <filter>
-        <whitelist addUncoveredFilesFromWhitelist="true">
+        <whitelist addUncoveredFilesFromWhitelist="false">
             <directory suffix=".php">./src</directory>
         </whitelist>
     </filter>

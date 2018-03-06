@@ -2,19 +2,16 @@
 
 namespace DoctrineDataFixtureTest\Command;
 
+use Doctrine\Common\EventManager;
+use Doctrine\DBAL\Connection;
+use Doctrine\ORM\Configuration;
 use DoctrineDataFixtureModule\Command\ImportCommand;
-use PHPUnit\Framework\MockObject\Matcher\Invocation;
-use PHPUnit\Framework\MockObject\Matcher\InvokedAtIndex;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\Console\Input\ArgvInput;
 use Symfony\Component\Console\Output\ConsoleOutput;
-use Zend\Console\Console;
-use Zend\EventManager\EventManager;
 use Zend\ServiceManager\ServiceManager;
 use Doctrine\ORM\EntityManager;
-use Symfony\Component\Console\Input\InputInterface;
-use Symfony\Component\Console\Output\OutputInterface;
 
 class ImportCommandTest extends TestCase
 {
@@ -33,18 +30,32 @@ class ImportCommandTest extends TestCase
             ],
         ]);
 
+        /** @var MockObject $conn */
+        $conn = $this->getMockBuilder(Connection::class)
+            ->disableOriginalConstructor()
+            ->getMock();
+
+        /** @var MockObject $config */
+        $config = $this->getMockBuilder(Configuration::class)
+            ->disableOriginalConstructor()
+            ->getMock();
+
         /** @var MockObject $eventManager */
-        $eventManager = new EventManager();
+        $eventManager = $this->getMockBuilder(EventManager::class)
+            ->disableOriginalConstructor()
+            ->getMock();
 
         /** @var MockObject $entityManager */
         $entityManager = $this->getMockBuilder(EntityManager::class)
             ->disableOriginalConstructor()
-            ->setMethods(['getEntityManager'])
+            ->setMethods(['getEventManager', 'beginTransaction', 'transactional'])
             ->getMock();
-        $entityManager->method('getEntityManager')
+        $entityManager->method('getEventManager')
             ->will($this->returnValue($eventManager));
-
-        $a = $entityManager->getEventManager();
+        $entityManager->method('beginTransaction')
+            ->will($this->returnValue(true));
+        $entityManager->method('transactional')
+            ->will($this->returnValue(true));
 
         /** @var ImportCommand $command */
         $command = new ImportCommand($serviceManager);
@@ -57,18 +68,23 @@ class ImportCommandTest extends TestCase
         $this->assertInstanceOf(EntityManager::class, $command->getEntityManager(), 'Expected instance of ' . EntityManager::class);
 
         $command->setPaths([
-            '../Fixture',
+            __DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'Fixture',
         ]);
 
         $this->assertInternalType('array', $command->getPaths(), 'Expected paths to be array');
         $this->assertFalse(empty($command->getPaths()), 'Expected paths to be filled with fake data');
 
-        /** @var ArgvInput $input */
+        /** @var MockObject $input */
         $input = $this->getMockBuilder(ArgvInput::class)
             ->disableOriginalConstructor()
+            ->setMethods(['getOption'])
             ->getMock();
+        $input->expects($this->any())
+            ->method('getOption')
+            ->withAnyParameters()
+            ->will($this->returnValue(true));
 
-        /** @var ConsoleOutput $output */
+        /** @var MockObject $output */
         $output = $this->getMockBuilder(ConsoleOutput::class)
             ->disableOriginalConstructor()
             ->getMock();
