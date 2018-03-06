@@ -2,6 +2,7 @@
 
 [![Build Status](https://travis-ci.org/rvdlee-salesupply/DoctrineDataFixtureModule.svg?branch=master)](https://travis-ci.org/rvdlee-salesupply/DoctrineDataFixtureModule)
 [![Coverage Status](https://coveralls.io/repos/github/rvdlee-salesupply/DoctrineDataFixtureModule/badge.svg?branch=master)](https://coveralls.io/github/rvdlee-salesupply/DoctrineDataFixtureModule?branch=master)
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/rvdlee-salesupply/DoctrineDataFixtureModule/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/rvdlee-salesupply/DoctrineDataFixtureModule/?branch=master)
 
 ## Introduction
 
