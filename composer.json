@@ -1,6 +1,6 @@
 {
-    "name": "rvdlee-salesupply/doctrine-data-fixture-module",
-    "description": "A port for ZF3 of Hounddog's original data-fixture code.",
+    "name": "rvdlee/doctrine-data-fixture-module",
+    "description": "A port for ZF3 of Hounddog's original data-fixture code with the ability to change the executor for fixtures.",
     "type": "library",
     "license": "MIT",
     "keywords": [
