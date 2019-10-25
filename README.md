@@ -1,7 +1,7 @@
 # DoctrineDataFixture Module for Zend Framework 3
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/rvdlee/doctrine-data-fixture-module.svg?style=flat-square)](https://packagist.org/packages/rvdlee/doctrine-data-fixture-module)
-[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/rvdlee/doctrine-data-fixture-module/badges/quality-score.png)](https://scrutinizer-ci.com/g/rvdlee/DoctrineDataFixtureModule)
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/rvdlee/DoctrineDataFixtureModule/badges/quality-score.png)](https://scrutinizer-ci.com/g/rvdlee/DoctrineDataFixtureModule)
 [![Total Downloads](https://img.shields.io/packagist/dt/rvdlee/doctrine-data-fixture-module.svg?style=flat-square)](https://packagist.org/packages/rvdlee/doctrine-data-fixture-module)
 [![GitHub license](https://img.shields.io/github/license/rvdlee/DoctrineDataFixtureModule.svg)](https://github.com/rvdlee/DoctrineDataFixtureModule/blob/master/LICENSE)
 [![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.me/epicsoftworks)
