@@ -2,6 +2,7 @@
 
 namespace DoctrineDataFixtureModule\Command;
 
+use Doctrine\Common\DataFixtures\Executor\AbstractExecutor;
 use Doctrine\Common\DataFixtures\Loader;
 use Doctrine\ORM\EntityManager;
 use Symfony\Component\Console\Command\Command;
@@ -77,6 +78,8 @@ class ImportCommand extends Command
      */
     public function execute(InputInterface $input, OutputInterface $output)
     {
+        /** @var array $config */
+        $config = $this->getServiceLocator()->get('config');
         /** @var Loader $loader */
         $loader = new Loader();
         /** @var ORMPurger $purger */
@@ -87,8 +90,13 @@ class ImportCommand extends Command
             $purger->setPurgeMode(self::PURGE_MODE_TRUNCATE);
         }
 
-        /** @var ORMExecutor $executor */
-        $executor = new ORMExecutor($this->getEntityManager(), $purger);
+        if ( ! isset($config['rvdlee']['doctrine-data-fixture']['executor'])) {
+            /** @var ORMExecutor $executor */
+            $executor = new ORMExecutor($this->getEntityManager(), $purger);
+        } else {
+            /** @var AbstractExecutor $executor */
+            $executor = $this->getServiceLocator()->get($config['rvdlee']['doctrine-data-fixture']['executor']);
+        }
 
         foreach ($this->getPaths() as $key => $value) {
             $loader->loadFromDirectory($value);

@@ -1,0 +1,11 @@
+<?php
+
+namespace DoctrineDataFixtureModule;
+
+return [
+    'rvdlee' => [
+        'doctrine-data-fixture' => [
+            'executor' => YourExecutor::class,
+        ],
+    ],
+];
