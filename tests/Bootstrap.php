@@ -2,8 +2,8 @@
 
 namespace DoctrineDataFixtureTest;
 
-use Zend\Loader\AutoloaderFactory;
-use Zend\Mvc\Application;
+use Laminas\Loader\AutoloaderFactory;
+use Laminas\Mvc\Application;
 
 /**
  * This makes our life easier when dealing with paths. Everything is relative
