@@ -1,6 +1,6 @@
 {
-    "name": "rvdlee-salesupply/doctrine-data-fixture-module",
-    "description": "A port for ZF3 of Hounddog's original data-fixture code.",
+    "name": "rvdlee/doctrine-data-fixture-module",
+    "description": "A port for ZF3 of Hounddog's original data-fixture code with the ability to change the executor for fixtures.",
     "type": "library",
     "license": "MIT",
     "keywords": [
@@ -24,12 +24,13 @@
         "php": "^7",
         "doctrine/data-fixtures": "^1.3",
         "doctrine/doctrine-orm-module": "^1.1",
-        "php-coveralls/php-coveralls": "^2.0"
+        "php-coveralls/php-coveralls": "^2.0",
+        "laminas/laminas-dependency-plugin": "^1.0"
     },
     "require-dev": {
         "zendframework/zendframework": "3.*",
         "symfony/symfony": "^3.4",
-        "phpunit/phpunit" : "^6",
+        "phpunit/phpunit": "^6",
         "squizlabs/php_codesniffer": "*"
     },
     "autoload": {

@@ -4,15 +4,15 @@ namespace DoctrineDataFixtureModule;
 
 use Doctrine\ORM\EntityManager;
 use Symfony\Component\Console\Application;
-use Zend\ModuleManager\Feature\AutoloaderProviderInterface;
-use Zend\ModuleManager\Feature\ServiceProviderInterface;
-use Zend\ModuleManager\Feature\ConfigProviderInterface;
-use Zend\EventManager\EventInterface;
-use Zend\ModuleManager\ModuleManager;
+use Laminas\ModuleManager\Feature\AutoloaderProviderInterface;
+use Laminas\ModuleManager\Feature\ServiceProviderInterface;
+use Laminas\ModuleManager\Feature\ConfigProviderInterface;
+use Laminas\EventManager\EventInterface;
+use Laminas\ModuleManager\ModuleManager;
 use Doctrine\ORM\Tools\Console\ConsoleRunner;
 use DoctrineDataFixtureModule\Command\ImportCommand;
 use DoctrineDataFixtureModule\Service\FixtureFactory;
-use Zend\ServiceManager\ServiceLocatorInterface;
+use Laminas\ServiceManager\ServiceLocatorInterface;
 
 /**
  * Base module for Doctrine Data Fixture.
@@ -71,7 +71,7 @@ class Module implements
     }
 
     /**
-     * @return array|\Zend\ServiceManager\Config
+     * @return array|\Laminas\ServiceManager\Config
      */
     public function getServiceConfig()
     {
@@ -83,6 +83,6 @@ class Module implements
      */
     public function getAutoloaderConfig()
     {
-        return ['Zend\Loader\StandardAutoloader' => $this->getConfig()['Zend\Loader\StandardAutoloader']];
+        return ['Laminas\Loader\StandardAutoloader' => $this->getConfig()['Laminas\Loader\StandardAutoloader']];
     }
 }

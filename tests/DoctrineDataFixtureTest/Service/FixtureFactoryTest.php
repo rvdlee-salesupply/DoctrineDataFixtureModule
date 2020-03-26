@@ -3,8 +3,8 @@
 namespace DoctrineDataFixtureTest\Command;
 
 use DoctrineDataFixtureModule\Service\FixtureFactory;
-use Zend\ServiceManager\ServiceManager;
-use Zend\Test\PHPUnit\Controller\AbstractControllerTestCase;
+use Laminas\ServiceManager\ServiceManager;
+use Laminas\Test\PHPUnit\Controller\AbstractControllerTestCase;
 
 class FixtureFactoryTest extends AbstractControllerTestCase
 {
